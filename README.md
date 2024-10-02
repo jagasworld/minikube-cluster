@@ -13,4 +13,8 @@ Now, to avoid communication between these two namespaces we can apply a network 
 
 If we are using helm chart, we can deploy all the resources together.
 
-For deployment, we can install GitOps tool ArgoCD (Open source) so that we can enable continuous deployment in Kubernetes.
+For deployment, we can install GitOps tool ArgoCD (Open source) so that we can enable continuous deployment in Kubernetes
+
+##############################################################################################
+
+helm install my-app-release my-app-chart
