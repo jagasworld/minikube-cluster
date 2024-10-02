@@ -1,3 +1,5 @@
+Refer 'Kubernetes Output.pdf' file
+###########################################################################################
 I have done this using minikube cluster in the local environment.
 Enabled network policy for blocking communication between different namespaces
 Tested using a test-pod launched in feature1-namespace
