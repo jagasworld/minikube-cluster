@@ -1,41 +1,42 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: deny-feature1-to-feature2
+  name: deny-ingress-from-feature1
   namespace: feature1-namespace
 spec:
   podSelector: {}
   policyTypes:
   - Ingress
-  - Egress
   ingress:
   - from:
-      - namespaceSelector:
-          matchLabels:
-            name: feature2-namespace
-  egress:
-  - to:
-      - namespaceSelector:
-          matchLabels:
-            name: feature2-namespace
+    - namespaceSelector:
+        matchLabels:
+          name: feature1-namespace
+    - namespaceSelector:
+        matchLabels:
+          name: feature2-namespace
+      podSelector:
+        matchLabels:
+          name: feature2-namespace
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: deny-feature2-to-feature1
+  name: deny-ingress-from-feature1
   namespace: feature2-namespace
 spec:
   podSelector: {}
   policyTypes:
   - Ingress
-  - Egress
   ingress:
   - from:
-      - namespaceSelector:
-          matchLabels:
-            name: feature1-namespace
-  egress:
-  - to:
-      - namespaceSelector:
-          matchLabels:
-            name: feature1-namespace
+    - namespaceSelector:
+        matchLabels:
+          name: feature2-namespace
+    - namespaceSelector:
+        matchLabels:
+          name: feature1-namespace
+      podSelector:
+        matchLabels:
+          name: feature1-namespace
